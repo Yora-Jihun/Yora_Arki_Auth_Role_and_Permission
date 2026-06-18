@@ -60,7 +60,7 @@
 
   <aside id="sidebar" class="w-[250px] fixed left-0 top-0 h-screen bg-white border-r border-[#EAEAEA] flex flex-col z-50 transition-all duration-300">
        <div class="absolute -right-3 top-6">
-          <button id="sidebarToggle" type="button" class="w-6 h-6 bg-white border border-gray-200 rounded-full shadow-sm flex items-center justify-center text-gray-500 hover:bg-gray-50 transition">
+          <button id="sidebarToggle" type="button" aria-label="Toggle Sidebar" class="w-6 h-6 bg-white border border-gray-200 rounded-full shadow-sm flex items-center justify-center text-gray-500 hover:bg-gray-50 transition">
               <svg id="collapseIcon" class="w-3 h-3 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                   <path d="M15 18l-6-6 6-6"/>
               </svg>
@@ -77,8 +77,8 @@
 
      <div class="px-3 pb-4 search-wrapper">
          <div class="relative">
-             <input type="text" placeholder="Search menu..." class="w-full bg-gray-50 px-3 py-2 pl-9 text-xs text-gray-600 border border-gray-100 focus:outline-none focus:border-blue-300 focus:bg-white transition">
-             <svg class="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+             <input type="text" placeholder="Search menu..." aria-label="Search menu" class="w-full bg-gray-50 px-3 py-2 pl-9 text-xs text-gray-600 border border-gray-100 focus:outline-none focus:border-blue-300 focus:bg-white transition">
+             <svg class="w-3.5 h-3.5 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
              </svg>
          </div>
@@ -141,12 +141,12 @@
             </svg>
             <span class="nav-text whitespace-nowrap">Help</span>
         </a>
-        <a href="#" wire:navigate class="sidebar-item flex items-center gap-2.5 px-3 py-2 text-[13px] text-gray-700 bottom-item">
-            <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
-            </svg>
-            <span class="nav-text whitespace-nowrap">Settings</span>
-        </a>
+          <a href="{{ route('profile-settings') }}" wire:navigate class="sidebar-item flex items-center gap-2.5 px-3 py-2 text-[13px] text-gray-700 bottom-item">
+              <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+              </svg>
+              <span class="nav-text whitespace-nowrap">Settings</span>
+          </a>
      </div>
  </aside>
 
