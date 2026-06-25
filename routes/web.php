@@ -1,8 +1,10 @@
 <?php
 
+use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\RegisterVerify;
+use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Settings\ProfileSettings;
 use App\Livewire\Settings\SecuritySettings;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +20,12 @@ Route::middleware('guest')->group(function () {
     Route::get('/register/verify', RegisterVerify::class)
         ->name('register.verify')
         ->middleware('registration.session');
+
+    Route::get('/forgot-password', ForgotPassword::class)->name('forgot.password');
+
+    Route::get('/reset-password', ResetPassword::class)
+        ->name('password.reset')
+        ->middleware('password.reset.session');
 });
 
 Route::middleware('auth')->group(function () {

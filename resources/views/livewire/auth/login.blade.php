@@ -61,6 +61,10 @@
                                 <input type="checkbox" wire:model="remember" id="remember" class="h-4 w-4 border-slate-300 text-blue-600 focus:ring-blue-500">
                                 Remember me
                             </label>
+
+                            <a href="{{ route('forgot.password') }}" wire:navigate class="text-sm text-[#0A5FFF] hover:underline">
+                                Forgot password?
+                            </a>
                         </div>
 
                         <button type="submit" class="inline-flex w-full items-center justify-center bg-[#0A5FFF] px-4 py-3.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-[#0757E8] focus:outline-none focus:ring-4 focus:ring-blue-500/20">
