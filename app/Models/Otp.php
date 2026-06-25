@@ -23,6 +23,8 @@ use Illuminate\Support\Carbon;
  */
 class Otp extends Model
 {
+    private const LOCK_DURATION_MINUTES = 5;
+
     protected $fillable = ['email', 'otp', 'expires_at', 'type', 'failed_attempts', 'locked_at'];
 
     protected $casts = [
@@ -71,14 +73,14 @@ class Otp extends Model
     public function scopeNotLocked(Builder $query): Builder
     {
         return $query->where(function ($query) {
-            $query->where('locked_at', null)->orWhere('locked_at', '<=', now()->subMinutes(5));
+            $query->where('locked_at', null)->orWhere('locked_at', '<=', now()->subMinutes(self::LOCK_DURATION_MINUTES));
         });
     }
 
     public function incrementFailedAttempts(): void
     {
         $this->increment('failed_attempts');
-        $this->refresh();
+        $this->failed_attempts++;
     }
 
     public function lock(): void
@@ -88,6 +90,6 @@ class Otp extends Model
 
     public function isLocked(): bool
     {
-        return $this->locked_at !== null && $this->locked_at->gt(now()->subMinutes(5));
+        return $this->locked_at !== null && $this->locked_at->gt(now()->subMinutes(self::LOCK_DURATION_MINUTES));
     }
 }

@@ -1,4 +1,4 @@
-<div class="w-full" wire:poll.1s="tick">
+<div class="w-full" @if($cooldown > 0) wire:poll.1s="tick" @endif>
     <div class="overflow-hidden bg-white shadow-2xl shadow-slate-200/70 ring-1 ring-slate-900/5 transition-all duration-300 ease-out">
         <div class="grid min-h-screen grid-cols-1 lg:grid-cols-2 lg:min-h-0">
             @include('livewire.auth.partials.side-landing')
@@ -24,13 +24,13 @@
                     </div>
 
                     <form wire:submit="verify" class="space-y-4">
-                        @error('otp')
+                        @if($otpError)
                             @include('partials.alerts', [
                                 'type' => 'error',
-                                'message' => $message,
+                                'message' => $otpError,
                                 'class' => 'mb-4',
                             ])
-                        @enderror
+                        @endif
 
                         <div>
                             @include('livewire.auth.partials.input-field', [
@@ -44,6 +44,8 @@
                                     'required' => true,
                                     'maxlength' => '6',
                                     'autofocus' => true,
+                                    'inputmode' => 'numeric',
+                                    'pattern' => '[0-9]*',
                                 ]),
                             ])
                         </div>

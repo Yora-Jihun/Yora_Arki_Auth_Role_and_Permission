@@ -24,14 +24,6 @@
                     </div>
 
                     <form wire:submit="submit" class="space-y-4">
-                        @error('auth')
-                            @include('partials.alerts', [
-                                'type' => 'error',
-                                'message' => $message,
-                                'class' => 'mb-4',
-                            ])
-                        @enderror
-
                         <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
                             @include('livewire.auth.partials.input-field', [
                                 'name' => 'first_name',
@@ -124,21 +116,21 @@
                             required
                         />
 
-                        {{-- <div class="space-y-2">
-                            <label class="block text-sm font-medium text-slate-700">Security Check</label>
-                            <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="light" data-callback="onTurnstileSuccess"></div>
-                            <input type="hidden" name="turnstile_token" wire:model="turnstile_token" id="turnstile_token">
-                            @error('turnstile_token')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div> --}}
-
                         <button
                             type="submit"
                             class="inline-flex w-full items-center justify-center bg-[#0A5FFF] px-4 py-3.5 text-sm font-semibold text-white transition duration-200 hover:bg-[#0757E8] focus:outline-none focus:ring-4 focus:ring-blue-500/20"
                             >
                             Create account
                         </button>
+
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-slate-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="bg-white px-2 text-slate-500">or</span>
+                            </div>
+                        </div>
 
                         <button
                             type="button"
@@ -147,7 +139,7 @@
                             <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fill="#4285F4" d="M23.77 12.27c0-.83-.07-1.64-.2-2.42H12v4.57h6.64a5.68 5.68 0 0 1-2.47 3.72v3.04h3.99c2.33-2.14 3.61-5.3 3.61-8.91Z" />
                                 <path fill="#34A853" d="M12 24c3.32 0 6.11-1.1 8.16-2.99l-3.99-3.04c-1.11.75-2.53 1.19-4.17 1.19-3.2 0-5.91-2.16-6.88-5.07H1.03v3.15A12 12 0 0 0 12 24Z" />
-                                <path fill="#FBBC05" d="M5.12 14.09A7.44 7.44 0 0 1 4.75 12c0-.72.13-1.42.37-2.09V6.76H1.03A12 12 0 0 0 0 12c0 1.87.43 3.64 1.2 5.24l3.92-3.15Z" />
+                                <path fill="#FBBC05" d="M5.12 14.09A7.44 7.44 0 0 1 4.75 12c0-.72.13-1.42.37-2.09V6.76H1.03A12 12 0 0 0 0 6.76l4.09 3.15C6.09 7 8.8 4.84 12 4.84Z" />
                                 <path fill="#EA4335" d="M12 4.84c1.81 0 3.43.62 4.71 1.84l3.54-3.54C18.11 1.17 15.32 0 12 0A12 12 0 0 0 1.03 6.76l4.09 3.15C6.09 7 8.8 4.84 12 4.84Z" />
                             </svg>
                             Sign in with Google
@@ -165,11 +157,3 @@
         </div>
     </div>
 </div>
-
-{{-- <script>
-function onTurnstileSuccess(token) {
-    const input = document.getElementById('turnstile_token');
-    input.value = token;
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-}
-</script> --}}

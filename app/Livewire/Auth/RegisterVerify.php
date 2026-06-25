@@ -10,16 +10,13 @@ use Livewire\Component;
 
 class RegisterVerify extends Component
 {
-    /**
-     * @var array<int, string>
-     */
-    protected $listeners = ['verifyOtp'];
-
     public string $email = '';
 
     public string $otp = '';
 
     public int $cooldown = 0;
+
+    public string $otpError = '';
 
     private AuthService $authService;
 
@@ -47,6 +44,7 @@ class RegisterVerify extends Component
 
         if (! $this->email || ! session()->has('registration_data')) {
             $this->redirect(route('register'));
+            return;
         }
 
         $this->cooldown = $this->otpService->getResendCooldownRemaining($this->email);
@@ -64,7 +62,7 @@ class RegisterVerify extends Component
         $registrationData = session()->get('registration_data');
 
         if (! $this->otpService->verify($this->email, $this->otp, 'registration', request()->ip())) {
-            $this->addError('otp', 'Invalid or expired verification code.');
+            $this->otpError = 'Invalid or expired verification code.';
             $this->otp = '';
 
             return;
@@ -94,7 +92,7 @@ class RegisterVerify extends Component
             $this->cooldown = 60;
             $this->dispatch('otp-resended');
         } catch (ValidationException $e) {
-            $this->addError('otp', $e->getMessage());
+            $this->otpError = $e->getMessage();
         }
     }
 

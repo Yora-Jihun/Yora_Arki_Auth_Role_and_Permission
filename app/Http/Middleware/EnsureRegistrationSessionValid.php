@@ -10,7 +10,7 @@ class EnsureRegistrationSessionValid
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->expectsJson() && session()->missing('registration_data')) {
+        if (! $request->expectsJson() && (session()->missing('registration_data') || session()->missing('registration_email'))) {
             return redirect()->route('register');
         }
 
