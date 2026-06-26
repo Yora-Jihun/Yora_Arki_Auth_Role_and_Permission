@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Auth;
 
-use App\Services\AuthService;
+use App\Models\User;
+use App\Services\OtpService;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -15,13 +17,15 @@ class ResetPassword extends Component
 
     public string $password_confirmation = '';
 
+    public int $cooldown = 0;
+
     public string $otpError = '';
 
-    private AuthService $authService;
+    private OtpService $otpService;
 
-    public function boot(AuthService $authService): void
+    public function boot(OtpService $otpService): void
     {
-        $this->authService = $authService;
+        $this->otpService = $otpService;
     }
 
     public function mount(): void
@@ -29,6 +33,8 @@ class ResetPassword extends Component
         if (! session()->has('password_reset_email')) {
             $this->redirect(route('forgot.password'));
         }
+
+        $this->cooldown = $this->otpService->getResendCooldownRemaining(session('password_reset_email'), 'password_reset');
     }
 
     protected function rules(): array
@@ -45,7 +51,7 @@ class ResetPassword extends Component
 
         $email = session()->get('password_reset_email');
 
-        if (! app(\App\Services\OtpService::class)->verify($email, $this->otp, 'password_reset', request()->ip())) {
+        if (! $this->otpService->verify($email, $this->otp, 'password_reset', request()->ip())) {
             $this->otpError = 'Invalid or expired verification code.';
 
             $this->otp = '';
@@ -53,7 +59,7 @@ class ResetPassword extends Component
             return;
         }
 
-        $user = \App\Models\User::where('email', $email)->first();
+        $user = User::where('email', $email)->first();
 
         if (! $user) {
             $this->addError('password', 'User not found.');
@@ -68,6 +74,33 @@ class ResetPassword extends Component
         session()->forget(['password_reset_email']);
 
         $this->redirect(route('login'));
+    }
+
+    public function resend(): void
+    {
+        $email = session()->get('password_reset_email');
+
+        if (! $email) {
+            $this->redirect(route('forgot.password'));
+
+            return;
+        }
+
+        try {
+            $this->otpService->send($email, 'password_reset');
+            $this->otp = '';
+            $this->cooldown = 60;
+            $this->dispatch('otp-resended');
+        } catch (ValidationException $e) {
+            $this->otpError = $e->getMessage();
+        }
+    }
+
+    public function tick(): void
+    {
+        if ($this->cooldown > 0) {
+            $this->cooldown--;
+        }
     }
 
     public function render(): View

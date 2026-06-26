@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Settings;
 
-use App\Services\AuthService;
 use App\Services\OtpService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -26,14 +28,36 @@ class SecuritySettings extends Component
 
     public bool $showDeleteModal = false;
 
-    private AuthService $authService;
-
     private OtpService $otpService;
 
-    public function boot(AuthService $authService, OtpService $otpService): void
+    private const CHANGE_PASSWORD_IP_RATE_LIMIT = 10;
+
+    private const CHANGE_PASSWORD_IP_RATE_TTL = 60;
+
+    public function boot(OtpService $otpService): void
     {
-        $this->authService = $authService;
         $this->otpService = $otpService;
+    }
+
+    private function validateChangePasswordRateLimit(): void
+    {
+        $ip = request()->ip();
+        $key = "password_change_attempts_{$ip}";
+        $attempts = Cache::get($key, 0);
+
+        if ($attempts >= self::CHANGE_PASSWORD_IP_RATE_LIMIT) {
+            throw ValidationException::withMessages([
+                'current_password' => 'Too many attempts. Please wait before trying again.',
+            ]);
+        }
+
+        Cache::put($key, $attempts + 1, now()->addMinutes(self::CHANGE_PASSWORD_IP_RATE_TTL / 60));
+    }
+
+    private function clearChangePasswordRateLimit(): void
+    {
+        $ip = request()->ip();
+        Cache::forget("password_change_attempts_{$ip}");
     }
 
     public function mount(): void
@@ -58,6 +82,8 @@ class SecuritySettings extends Component
 
     public function submit(): void
     {
+        $this->validateChangePasswordRateLimit();
+
         $this->validate([
             'current_password' => ['required', 'string'],
             'password' => ['required', 'string', Password::defaults()->min(8), 'confirmed'],
@@ -72,6 +98,8 @@ class SecuritySettings extends Component
         auth()->user()->update([
             'password' => $this->password,
         ]);
+
+        $this->clearChangePasswordRateLimit();
 
         $this->reset(['current_password', 'password', 'password_confirmation']);
 
@@ -89,7 +117,7 @@ class SecuritySettings extends Component
         try {
             $this->otpService->send($this->delete_email, 'account_deletion');
             $this->delete_cooldown = $this->otpService->getResendCooldownRemaining($this->delete_email, 'account_deletion');
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             $this->deleteError = $e->getMessage();
         }
     }
@@ -111,7 +139,7 @@ class SecuritySettings extends Component
 
         $user = auth()->user();
 
-        $this->authService->logout();
+        Auth::logout();
 
         $user->delete();
 

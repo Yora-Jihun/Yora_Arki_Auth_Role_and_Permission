@@ -44,6 +44,7 @@ class RegisterVerify extends Component
 
         if (! $this->email || ! session()->has('registration_data')) {
             $this->redirect(route('register'));
+
             return;
         }
 

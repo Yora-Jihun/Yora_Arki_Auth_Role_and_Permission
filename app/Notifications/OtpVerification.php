@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OtpVerification extends Notification implements ShouldQueue 
+class OtpVerification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -31,5 +31,3 @@ class OtpVerification extends Notification implements ShouldQueue
             ->salutation('— '.config('app.name'));
     }
 }
-
-

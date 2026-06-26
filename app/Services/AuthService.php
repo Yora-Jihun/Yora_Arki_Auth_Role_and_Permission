@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Support\EmailFormatter;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -21,7 +22,7 @@ class AuthService
         $user->setAttribute('fullname', $user->full_name);
 
         if ($verified) {
-            $user->email_verified_at = \Illuminate\Support\Carbon::now();
+            $user->email_verified_at = Carbon::now();
         }
 
         $user->save();

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
 use App\Services\OtpService;
 use App\Support\EmailFormatter;
 use Illuminate\Validation\ValidationException;
@@ -36,6 +37,14 @@ class ForgotPassword extends Component
 
         $this->validate();
 
+        $userExists = User::where('email', $this->email)->exists();
+
+        if (! $userExists) {
+            $this->error = 'Account not found.';
+
+            return;
+        }
+
         $this->otpService->send($this->email, 'password_reset');
 
         session()->put('password_reset_email', $this->email);
@@ -47,6 +56,14 @@ class ForgotPassword extends Component
 
     public function resend(): void
     {
+        $userExists = User::where('email', $this->email)->exists();
+
+        if (! $userExists) {
+            $this->error = 'Account not found.';
+
+            return;
+        }
+
         try {
             $this->otpService->send($this->email, 'password_reset');
 

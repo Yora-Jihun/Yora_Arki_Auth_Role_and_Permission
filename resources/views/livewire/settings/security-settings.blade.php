@@ -1,4 +1,4 @@
-<main class="space-y-6" wire:poll.1s="tick">
+<main class="space-y-6">
     <div class="flex items-center justify-between">
         <div>
             <h1 class="text-2xl font-bold text-gray-900">Security Settings</h1>
@@ -69,7 +69,7 @@
     </div>
 
     @if($showDeleteModal)
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4" wire:click="closeDeleteModal">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4" wire:click="closeDeleteModal" wire:poll.1s="tick">
             <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
             <div class="relative bg-white rounded-none shadow-xl w-full max-w-md p-6" wire:click.stop>
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">Delete Account</h3>

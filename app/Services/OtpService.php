@@ -7,7 +7,6 @@ use App\Models\Otp;
 use App\Notifications\OtpVerification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\ValidationException;
@@ -15,9 +14,13 @@ use Illuminate\Validation\ValidationException;
 class OtpService
 {
     private const MAX_ATTEMPTS_PER_HOUR = 3;
+
     private const MAX_FAILED_VERIFICATIONS = 5;
+
     private const RESEND_COOLDOWN_SECONDS = 60;
+
     private const VERIFY_IP_RATE_LIMIT = 10;
+
     private const VERIFY_IP_RATE_TTL = 60;
 
     public function sendForRegistration(string $email): void
