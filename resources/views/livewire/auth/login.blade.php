@@ -5,7 +5,7 @@
                 <div class="w-full max-w-md space-y-6">
                     <div class="space-y-6">
                         <a href="{{ route('welcome') }}" wire:navigate class="inline-flex items-center gap-3 transition-all duration-200 ease-out hover:opacity-90">
-                            <span class="grid h-11 w-11 place-items-center bg-blue-600 text-sm font-bold text-white">
+                            <span class="grid h-11 w-11 place-items-center bg-emerald-600 text-sm font-bold text-white">
                                 YA
                             </span>
                             <span class="text-lg font-semibold tracking-tight text-slate-950">Yora Arki</span>
@@ -36,7 +36,7 @@
                                 id="email"
                                 type="email"
                                 wire:model="email"
-                                class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100 focus:outline-none focus:border-blue-300 focus:bg-white transition"
+                                class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100 focus:outline-none focus:border-emerald-300 focus:bg-white transition"
                                 placeholder="you@example.com"
                                 required
                                 autofocus
@@ -58,16 +58,20 @@
 
                         <div class="flex items-center justify-between gap-3">
                             <label for="remember" class="inline-flex items-center gap-2 text-sm text-slate-600">
-                                <input type="checkbox" wire:model="remember" id="remember" class="h-4 w-4 border-slate-300 text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" wire:model="remember" id="remember" class="h-4 w-4 border-slate-300 text-emerald-600 focus:ring-emerald-500">
                                 Remember me
                             </label>
-
-                            <a href="{{ route('forgot.password') }}" wire:navigate class="text-sm text-[#0A5FFF] hover:underline">
+                            <a href="{{ route('forgot.password') }}" wire:navigate class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 transition-all duration-200 ease-out hover:text-slate-900">
+                                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8h.01"/>
+                                </svg>
                                 Forgot password?
                             </a>
                         </div>
 
-                        <button type="submit" class="inline-flex w-full items-center justify-center bg-[#0A5FFF] px-4 py-3.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-[#0757E8] focus:outline-none focus:ring-4 focus:ring-blue-500/20">
+                        <button type="submit" class="inline-flex w-full items-center justify-center bg-[#059669] px-4 py-3.5 text-sm font-semibold text-white transition-all duration-200 ease-out hover:bg-[#047857] focus:outline-none focus:ring-4 focus:ring-emerald-500/20">
                             Sign in
                         </button>
 
@@ -93,7 +97,7 @@
 
                     <p class="text-center text-sm text-slate-500 mt-4">
                         Don't have an account?
-                        <a href="{{ route('register') }}" wire:navigate class="font-semibold text-[#0A5FFF] transition-all duration-200 ease-out hover:text-[#0757E8]">
+                        <a href="{{ route('register') }}" wire:navigate class="font-semibold text-[#059669] transition-all duration-200 ease-out hover:text-[#047857]">
                             Register here
                         </a>
                     </p>

@@ -27,11 +27,11 @@ $styles = [
         'icon' => '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>',
     ],
     'info' => [
-        'border' => 'border border-blue-300/60',
-        'background' => 'bg-blue-50/70 backdrop-blur-md',
-        'text' => 'text-blue-700',
-        'iconBackground' => 'bg-blue-100/80',
-        'iconText' => 'text-blue-600',
+        'border' => 'border border-emerald-300/60',
+        'background' => 'bg-emerald-50/70 backdrop-blur-md',
+        'text' => 'text-emerald-700',
+        'iconBackground' => 'bg-emerald-100/80',
+        'iconText' => 'text-emerald-600',
         'icon' => '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.83a.75.75 0 0 0 .728.938h.75a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.75a.75.75 0 0 0-.75.75v.75ZM12 2.25a9.75 9.75 0 1 0 0 19.5 9.75 9.75 0 0 0 0-19.5Z" /></svg>',
     ],
 ];

@@ -21,7 +21,7 @@
             autocomplete="{{ $autocomplete }}"
         @endif
         {{ $attributes }}
-        class="{{ $attributes->get('class', 'block w-full border border-gray-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10') }}"
+        class="{{ $attributes->get('class', 'block w-full border border-gray-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition duration-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10') }}"
     >
 
     @error($name)

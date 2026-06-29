@@ -34,7 +34,7 @@
                 wire:model="{{ $model }}"
             @endif
             {{ $attributes->except(['type', 'wire:model']) }}
-            class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100 focus:outline-none focus:border-blue-300 focus:bg-white transition"
+            class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100 focus:outline-none focus:border-emerald-300 focus:bg-white transition"
         >
 
         @if($isPassword)

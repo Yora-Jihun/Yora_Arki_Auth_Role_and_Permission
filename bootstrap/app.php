@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\EnsurePasswordResetSessionValid;
 use App\Http\Middleware\EnsureRegistrationSessionValid;
+use App\Http\Middleware\EnsureUserRole;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'registration.session' => EnsureRegistrationSessionValid::class,
             'password.reset.session' => EnsurePasswordResetSessionValid::class,
+            'role' => EnsureUserRole::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

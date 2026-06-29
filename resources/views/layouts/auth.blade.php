@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auth</title>
-    <meta name="theme-color" content="#0A5FFF">
+    <meta name="theme-color" content="#059669">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     <meta name="description" content="Secure authentication for Yora Arki - register or sign in to access your account">

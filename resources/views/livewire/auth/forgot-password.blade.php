@@ -7,7 +7,7 @@
                 <div class="w-full max-w-md space-y-6">
                     <div class="space-y-6">
                         <a href="{{ route('welcome') }}" wire:navigate class="inline-flex items-center gap-3 transition-all duration-200 ease-out hover:opacity-90">
-                            <span class="grid h-11 w-11 place-items-center bg-blue-600 text-sm font-bold text-white">
+                            <span class="grid h-11 w-11 place-items-center bg-emerald-600 text-sm font-bold text-white">
                                 YA
                             </span>
                             <span class="text-lg font-semibold tracking-tight text-slate-950">Yora Arki</span>
@@ -48,13 +48,13 @@
 
                         <button
                             type="submit"
-                            class="inline-flex w-full items-center justify-center bg-[#0A5FFF] px-4 py-3.5 text-sm font-semibold text-white transition duration-200 hover:bg-[#0757E8] focus:outline-none focus:ring-4 focus:ring-blue-500/20"
+                            class="inline-flex w-full items-center justify-center bg-[#059669] px-4 py-3.5 text-sm font-semibold text-white transition duration-200 hover:bg-[#047857] focus:outline-none focus:ring-4 focus:ring-emerald-500/20"
                         >
                             Send Verification Code
                         </button>
 
                         <div class="text-sm">
-                            <a href="{{ route('login') }}" wire:navigate class="text-[#0A5FFF] hover:underline">
+                            <a href="{{ route('login') }}" wire:navigate class="text-[#059669] hover:underline">
                                 Back to Login
                             </a>
                         </div>

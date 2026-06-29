@@ -5,6 +5,11 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\RegisterVerify;
 use App\Livewire\Auth\ResetPassword;
+use App\Livewire\Employee\Attendance\AttendanceIndex;
+use App\Livewire\Employee\Invitation\AcceptInvitation;
+use App\Livewire\Employee\Invitation\InvitationIndex;
+use App\Livewire\Employer\Company\CompanyIndex;
+use App\Livewire\Employer\Company\CompanyShow;
 use App\Livewire\Settings\ProfileSettings;
 use App\Livewire\Settings\SecuritySettings;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +37,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
     })->name('dashboard');
+
+    Route::get('/employer/companies', CompanyIndex::class)
+        ->middleware('role:employer')
+        ->name('employer.companies');
+
+    Route::get('/employer/companies/{company}', CompanyShow::class)
+        ->middleware('role:employer')
+        ->name('employer.companies.show');
+
+    Route::get('/employee/invitations', InvitationIndex::class)
+        ->middleware('role:employee')
+        ->name('employee.invitations');
+
+    Route::get('/invitations/accept/{token}', AcceptInvitation::class)
+        ->middleware('role:employee')
+        ->name('employee.invitations.accept');
+
+    Route::get('/employee/attendance', AttendanceIndex::class)
+        ->middleware('role:employee')
+        ->name('employee.attendance');
 
     Route::get('/profile-settings', ProfileSettings::class)->name('profile-settings');
 

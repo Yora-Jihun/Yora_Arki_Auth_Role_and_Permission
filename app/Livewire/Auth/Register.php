@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Enums\UserRole;
 use App\Services\OtpService;
 use App\Support\EmailFormatter;
 use Illuminate\View\View;
@@ -18,6 +19,8 @@ class Register extends Component
     public string $suffix = '';
 
     public string $email = '';
+
+    public string $role = UserRole::Employee->value;
 
     public string $password = '';
 
@@ -40,7 +43,8 @@ class Register extends Component
             'middle_name' => ['nullable', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'suffix' => ['nullable', 'string', 'max:10'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'role' => ['required', 'string', 'in:'.implode(',', UserRole::values())],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }

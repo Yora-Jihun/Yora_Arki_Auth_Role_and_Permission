@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('suffix')->nullable();
             $table->string('fullname')->nullable();
+            $table->string('role')->default('employee');
+            $table->string('employee_id')->nullable()->unique();
+            $table->string('employer_id')->nullable()->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

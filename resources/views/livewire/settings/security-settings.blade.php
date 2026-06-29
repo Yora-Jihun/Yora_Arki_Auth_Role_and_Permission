@@ -54,7 +54,7 @@
             </div>
 
             <div class="pt-2">
-                <button type="submit" class="px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-none hover:bg-blue-700 transition">Update Password</button>
+                <button type="submit" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium rounded-none hover:bg-emerald-700 transition">Update Password</button>
             </div>
         </form>
     </div>
@@ -89,7 +89,7 @@
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Verification Code</label>
-                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" wire:model="delete_otp" class="block w-full border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10" placeholder="Enter 6-digit code">
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" wire:model="delete_otp" class="block w-full border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition duration-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10" placeholder="Enter 6-digit code">
                         </div>
                         <div class="flex justify-end gap-3">
                             <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition">Cancel</button>
