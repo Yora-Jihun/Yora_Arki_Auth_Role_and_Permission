@@ -30,7 +30,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('department_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('department_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
 
             $table->unique(['company_id', 'user_id']);
@@ -39,7 +39,7 @@ return new class extends Migration
         Schema::create('invitations', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('company_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('department_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('department_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('employee_id')->nullable()->references('id')->on('users')->nullOnDelete();
             $table->foreignId('invited_by')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('accepted_by')->nullable()->constrained('users')->nullOnDelete();

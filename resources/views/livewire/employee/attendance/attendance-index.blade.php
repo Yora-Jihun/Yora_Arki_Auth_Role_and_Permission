@@ -23,7 +23,7 @@
             <div class="bg-white border border-gray-100 p-6">
                 <p class="text-xs font-medium text-gray-500">Current Company</p>
                 <p class="text-sm font-semibold text-gray-900 mt-1">{{ $membership?->name ?? 'Not joined yet' }}</p>
-                <p class="text-xs text-gray-500 mt-2">Department: {{ $department_id ? 'Assigned' : 'No department' }}</p>
+                <p class="text-xs text-gray-500 mt-2">Department: {{ $department_name ?? 'No department assigned' }}</p>
             </div>
 
             <div class="bg-white border border-gray-100 p-6">

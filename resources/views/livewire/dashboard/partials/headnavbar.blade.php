@@ -1,7 +1,7 @@
 <div class="sticky top-0 z-30 h-[60px] bg-white/90 backdrop-blur flex items-center justify-end px-6 mb-4">
         <div class="flex items-center gap-3">
             <div class="relative group">
-                <button type="button" class="relative p-2 rounded-full hover:bg-gray-100 transition group">
+                <button type="button" class="relative p-2 rounded-full hover:bg-gray-100 transition group" aria-label="Notifications">
                     <svg class="w-5 h-5 text-gray-600 group-hover:text-gray-900" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
                         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
@@ -84,8 +84,8 @@
             <div class="w-px h-6 bg-gray-200"></div>
 
             <div class="relative group">
-                <div class="w-[36px] h-[36px] rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-sm cursor-pointer overflow-hidden ring-2 ring-white">
-                    <img src="{{ $this->avatarUrl() }}" class="w-[36px] h-[36px] rounded-full object-cover" alt="Avatar">
+                <div class="w-[36px] h-[36px] rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-sm cursor-pointer overflow-hidden ring-2 ring-white" role="button" tabindex="0" aria-label="Profile menu">
+                    <img src="{{ $this->avatarUrl() }}" class="w-[36px] h-[36px] rounded-full object-cover" alt="Avatar" loading="lazy">
                 </div>
 
                 <div class="absolute right-0 top-full mt-2 w-56 bg-white border border-gray-100 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right z-50">

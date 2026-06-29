@@ -9,6 +9,7 @@ use App\Models\Department;
 use App\Models\Invitation;
 use App\Models\User;
 use App\Notifications\InvitationCreated;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -175,6 +176,7 @@ class CompanyShow extends Component
             ->withQueryString();
 
         $employees = $this->company->employees()
+            ->withPivot('department_id')
             ->when($this->employee_search !== '', function ($query): void {
                 $query->where('users.fullname', 'like', '%'.$this->employee_search.'%')
                     ->orWhere('users.email', 'like', '%'.$this->employee_search.'%')
@@ -183,6 +185,14 @@ class CompanyShow extends Component
             ->orderBy('company_user.updated_at', 'desc')
             ->paginate(25)
             ->withQueryString();
+
+        $pivotMap = DB::table('company_user')
+            ->where('company_id', $this->company->id)
+            ->pluck('department_id', 'user_id');
+
+        $departmentMap = Department::query()
+            ->whereIn('id', $pivotMap->filter()->values()->all())
+            ->pluck('name', 'id');
 
         $invitations = $this->company->invitations()
             ->when($this->invitation_search !== '', function ($query): void {
@@ -194,20 +204,10 @@ class CompanyShow extends Component
             ->paginate(15)
             ->withQueryString();
 
-        $employeeDepartmentIds = $employees->getCollection()
-            ->pluck('pivot.department_id')
-            ->filter()
-            ->unique()
-            ->values()
-            ->all();
-
-        $departmentMap = $this->company->departments()
-            ->whereIn('id', $employeeDepartmentIds)
-            ->pluck('name', 'id');
-
         return view('livewire.employer.company.company-show', [
             'departments' => $departments,
-            'department_map' => $departmentMap,
+            'department_map' => $departmentMap->toArray(),
+            'pivot_map' => $pivotMap->toArray(),
             'invitations' => $invitations,
             'employees' => $employees,
         ])->layout('layouts.dashboard');

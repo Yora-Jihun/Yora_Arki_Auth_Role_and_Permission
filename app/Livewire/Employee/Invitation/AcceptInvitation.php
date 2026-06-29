@@ -4,6 +4,7 @@ namespace App\Livewire\Employee\Invitation;
 
 use App\Models\Invitation;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Livewire\Component;
 
@@ -41,9 +42,17 @@ class AcceptInvitation extends Component
             return;
         }
 
-        $this->invitation->company->employees()->syncWithoutDetaching([
-            $acceptedBy->id => ['department_id' => $this->invitation->department_id],
-        ]);
+        DB::table('company_user')->updateOrInsert(
+            [
+                'company_id' => $this->invitation->company_id,
+                'user_id' => $acceptedBy->id,
+            ],
+            [
+                'department_id' => $this->invitation->department_id,
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]
+        );
 
         $this->invitation->markAccepted($acceptedBy);
 

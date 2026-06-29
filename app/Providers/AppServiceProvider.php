@@ -3,15 +3,15 @@
 namespace App\Providers;
 
 use Carbon\CarbonImmutable;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\ServiceProvider;
-use Symfony\Component\Console\Output\ConsoleOutput;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Queue\Events\JobProcessed;
 use Illuminate\Queue\Events\JobProcessing;
-use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,22 +35,19 @@ class AppServiceProvider extends ServiceProvider
     protected function configureQueueOutput(): void
     {
         if (app()->runningInConsole()) {
-            Event::listen(JobProcessing::class, fn (JobProcessing $event) => 
-                $this->outputColored('▶ Processing: ' . class_basename($event->job->resolveName())));
+            Event::listen(JobProcessing::class, fn (JobProcessing $event) => $this->outputColored('▶ Processing: '.class_basename($event->job->resolveName())));
 
-            Event::listen(JobProcessed::class, fn (JobProcessed $event) => 
-                $this->outputColored('✓ Completed: ' . class_basename($event->job->resolveName())));
+            Event::listen(JobProcessed::class, fn (JobProcessed $event) => $this->outputColored('✓ Completed: '.class_basename($event->job->resolveName())));
 
-            Event::listen(JobFailed::class, fn (JobFailed $event) => 
-                $this->outputColored('✗ Failed: ' . class_basename($event->job->resolveName())));
+            Event::listen(JobFailed::class, fn (JobFailed $event) => $this->outputColored('✗ Failed: '.class_basename($event->job->resolveName())));
         }
     }
 
     protected function outputColored(string $message): void
     {
         $output = new ConsoleOutput(ConsoleOutput::VERBOSITY_NORMAL, true);
-        
-        $colorized = match(true) {
+
+        $colorized = match (true) {
             str_starts_with($message, '▶') => "<fg=cyan;bold>{$message}</>",
             str_starts_with($message, '✓') => "<fg=green;bold>{$message}</>",
             str_starts_with($message, '✗') => "<fg=red;bold>{$message}</>",

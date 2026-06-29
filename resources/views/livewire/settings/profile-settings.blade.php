@@ -36,9 +36,9 @@
         <div class="flex items-center gap-5 mb-6">
             <label for="avatarInput" class="cursor-pointer relative group flex-shrink-0">
                 @if(auth()->user()->avatar)
-                    <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar">
+                    <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar" loading="lazy">
                 @else
-                    <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Jerome Edica">
+                    <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar" loading="lazy">
                 @endif
                 <div class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">

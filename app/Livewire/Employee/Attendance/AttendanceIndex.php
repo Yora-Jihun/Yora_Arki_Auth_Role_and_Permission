@@ -5,6 +5,7 @@ namespace App\Livewire\Employee\Attendance;
 use App\Enums\AttendanceStatus;
 use App\Models\Attendance;
 use App\Models\Company;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -86,6 +87,7 @@ class AttendanceIndex extends Component
         $membership = $this->currentMembership();
         $company = $membership['company'] ?? null;
         $departmentId = $membership['department_id'] ?? null;
+        $departmentName = $departmentId ? Department::whereKey($departmentId)->value('name') : null;
         $today = Attendance::where('user_id', auth()->id())
             ->when($company, fn ($query) => $query->where('company_id', $company->id))
             ->where('date', Carbon::today())
@@ -93,7 +95,7 @@ class AttendanceIndex extends Component
 
         return view('livewire.employee.attendance.attendance-index', [
             'membership' => $company,
-            'department_id' => $departmentId,
+            'department_name' => $departmentName,
             'today' => $today,
             'history' => Attendance::where('user_id', auth()->id())
                 ->with(['company', 'department'])

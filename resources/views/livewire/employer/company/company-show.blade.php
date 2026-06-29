@@ -206,7 +206,8 @@
                                         <p class="text-sm font-medium text-gray-900">{{ $employee->fullname }}</p>
                                         <p class="text-xs text-gray-500">{{ $employee->employee_id }} · {{ $employee->email }}</p>
                                     </div>
-                                    <span class="text-xs font-medium bg-emerald-50 text-emerald-700 px-2.5 py-1">{{ $employee->pivot->department_id ? ($departmentMap[$employee->pivot->department_id] ?? 'No department') : 'No department' }}</span>
+                                    @php($deptId = $pivot_map[$employee->id] ?? null)
+                                    <span class="text-xs font-medium bg-emerald-50 text-emerald-700 px-2.5 py-1">{{ $deptId ? ($department_map[$deptId] ?? 'No department') : 'No department' }}</span>
                                 </div>
                             @empty
                                 <div class="border border-dashed border-gray-200 p-6 text-center text-sm text-gray-500">

@@ -66,7 +66,7 @@
     </div>
     <div class="px-3 pt-6 pb-2 flex items-center justify-between logo-wrapper">
         <a href="{{ route('dashboard') }}" wire:navigate class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-emerald-600 flex items-center justify-center shadow-sm flex-shrink-0">
+            <div class="w-10 h-10 bg-emerald-700 flex items-center justify-center shadow-sm flex-shrink-0">
                 <span class="text-white font-bold text-sm">YA</span>
             </div>
             <span class="sidebar-label text-[15px] font-semibold text-gray-950 tracking-tight whitespace-nowrap">Yora Arki</span>
