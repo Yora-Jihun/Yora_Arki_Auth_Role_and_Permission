@@ -1,7 +1,7 @@
 <main class="space-y-6">
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Security Settings</h1>
+            <h1 class="text-2xl font-bold text-emerald-700">Security Settings</h1>
             <p class="text-sm text-gray-500 mt-0.5">Update your password to keep your account secure</p>
         </div>
     </div>
@@ -54,7 +54,13 @@
             </div>
 
             <div class="pt-2">
-                <button type="submit" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium rounded-none hover:bg-emerald-700 transition">Update Password</button>
+                <button type="submit" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium rounded-none hover:bg-emerald-700 transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0l3 3m-3-3L9 3"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"/>
+                    </svg>
+                    Update Password
+                </button>
             </div>
         </form>
     </div>
@@ -63,7 +69,13 @@
         <h3 class="text-sm font-semibold text-red-700 uppercase tracking-wider mb-2">Danger Zone</h3>
         <p class="text-sm text-gray-500 mb-4">Once you delete your account, all of your data will be permanently removed. This action cannot be undone.</p>
 
-        <button type="button" wire:click="openDeleteModal" class="px-5 py-2.5 border border-red-600 text-red-600 text-sm font-medium bg-transparent hover:bg-red-600 hover:text-white transition">
+        <button type="button" wire:click="openDeleteModal" class="px-5 py-2.5 border border-red-600 text-red-600 text-sm font-medium bg-transparent hover:bg-red-600 hover:text-white transition flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 6l-1 14H6L5 6"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 11v6"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 11v6"/>
+            </svg>
             Delete Account Permanently
         </button>
     </div>
@@ -92,8 +104,21 @@
                             <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" wire:model="delete_otp" class="block w-full border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none transition duration-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10" placeholder="Enter 6-digit code">
                         </div>
                         <div class="flex justify-end gap-3">
-                            <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition">Cancel</button>
-                            <button type="button" wire:click="verifyDeleteOtp" class="px-4 py-2 bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition">Delete Account</button>
+                            <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                                Cancel
+                            </button>
+<button type="button" wire:click="verifyDeleteOtp" class="px-4 py-2 bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition flex items-center gap-1.5">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 6l-1 14H6L5 6"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 11v6"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 11v6"/>
+                                    </svg>
+                                    Delete Account
+                                </button>
                         </div>
                         <p class="text-xs text-gray-400 text-center">Resend code in {{ $delete_cooldown }}s</p>
                     </div>
@@ -106,8 +131,18 @@
                             </div>
                         </div>
                         <div class="flex justify-end gap-3">
-                            <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition">Cancel</button>
-                            <button type="button" wire:click="sendDeleteOtp" class="px-4 py-2 bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition">Send Verification Code</button>
+                            <button type="button" wire:click="closeDeleteModal" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                                Cancel
+                            </button>
+                            <button type="button" wire:click="sendDeleteOtp" class="px-4 py-2 bg-red-600 text-white text-sm font-medium hover:bg-red-700 transition flex items-center gap-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0l3 3m-3-3L9 3"/>
+                                </svg>
+                                Send Verification Code
+                            </button>
                         </div>
                     </div>
                 @endif

@@ -56,7 +56,7 @@
     <main class="space-y-6">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-2xl font-bold text-gray-900">{{ $user->roleLabel() }} Dashboard</h1>
+                <h1 class="text-2xl font-bold text-emerald-700">{{ $user->roleLabel() }} Dashboard</h1>
                 <p class="text-sm text-gray-500 mt-0.5">Welcome back, {{ $user->fullname ?? 'User' }}</p>
             </div>
         </div>
@@ -201,14 +201,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-6 border border-gray-100">
                     <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Today's Status</p>
-                    <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->status?->label() ?? 'Not Checked In' }}</p>
+                    <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->status?->label() ?? 'Not Timed In' }}</p>
                 </div>
                 <div class="bg-white p-6 border border-gray-100">
-                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Check In Time</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Time In</p>
                     <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->check_in_at?->format('h:i A') ?? '--' }}</p>
                 </div>
                 <div class="bg-white p-6 border border-gray-100">
-                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Check Out Time</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Time Out</p>
                     <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->check_out_at?->format('h:i A') ?? '--' }}</p>
                 </div>
                 <div class="bg-white p-6 border border-gray-100">
@@ -263,7 +263,7 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                             </svg>
-                            Check In / Check Out
+                            Time In / Time Out
                         </a>
                         <a href="{{ route('employee.invitations') }}" wire:navigate class="block w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 text-sm text-gray-700 transition flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -291,14 +291,14 @@
                                 <p class="text-xs text-gray-500 mt-1">{{ $membership->pivot->department_id ? 'Department assigned' : 'No department assigned' }}</p>
                             </div>
                             <div class="border border-gray-100 p-4">
-                                <p class="text-sm font-semibold text-gray-900">{{ $todayAttendance?->status?->label() ?? 'No attendance today' }}</p>
-                                <p class="text-xs text-gray-500 mt-1">Use the attendance page to check in or check out.</p>
+                                <p class="text-sm font-semibold text-gray-900">{{ $todayAttendance?->status?->label() ?? 'No time in today' }}</p>
+                                <p class="text-xs text-gray-500 mt-1">Use the attendance page to time in or time out.</p>
                             </div>
                         </div>
                     @else
-                        <div class="border border-dashed border-gray-200 p-6 text-center text-sm text-gray-500">
-                            Accept an invitation to join a company before checking in.
-                        </div>
+<div class="border border-dashed border-gray-200 p-6 text-center text-sm text-gray-500">
+                             Accept an invitation to join a company before time in.
+                         </div>
                     @endif
                 </div>
 

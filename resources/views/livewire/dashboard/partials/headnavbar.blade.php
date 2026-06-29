@@ -1,4 +1,4 @@
-<div class="sticky top-0 z-30 h-[72px] bg-white/90 backdrop-blur flex items-center justify-end px-6 mb-6">
+<div class="sticky top-0 z-30 h-[60px] bg-white/90 backdrop-blur flex items-center justify-end px-6 mb-4">
         <div class="flex items-center gap-3">
             <div class="relative group">
                 <button type="button" class="relative p-2 rounded-full hover:bg-gray-100 transition group">

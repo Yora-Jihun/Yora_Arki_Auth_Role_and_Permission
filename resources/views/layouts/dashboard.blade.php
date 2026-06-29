@@ -14,7 +14,7 @@
         @include('livewire.dashboard.partials.sidebar', ['active' => match(request()->route()->getName()) { 'dashboard' => 'dashboard', 'employer.companies', 'employer.companies.show' => 'company', 'employee.invitations', 'employee.invitations.accept' => 'invitations', 'employee.attendance' => 'attendance', 'profile-settings', 'security-settings' => 'settings', default => 'dashboard' }])
         <main id="mainContent" class="flex-1 overflow-y-auto overflow-x-hidden bg-[#F8F9FB] transition-all duration-300" style="margin-left: 250px;">
             @livewire('dashboard.partials.headnavbar')
-            <div class="p-8 min-h-full">
+            <div class="px-8 pt-4 min-h-full">
                 @hasSection('content')
                     @yield('content')
                 @else

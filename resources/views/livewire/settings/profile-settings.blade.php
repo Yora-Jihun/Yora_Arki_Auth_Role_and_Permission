@@ -1,7 +1,7 @@
 <main class="space-y-6">
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Profile Settings</h1>
+            <h1 class="text-2xl font-bold text-emerald-700">Profile Settings</h1>
             <p class="text-sm text-gray-500 mt-0.5">Manage your account information and preferences</p>
         </div>
     </div>
@@ -137,7 +137,13 @@
             </div>
 
             <div class="flex justify-end">
-                <button type="submit" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition">Save Changes</button>
+                <button type="submit" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                    Save Changes
+                </button>
             </div>
         </form>
     </div>

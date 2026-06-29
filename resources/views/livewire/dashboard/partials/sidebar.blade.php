@@ -82,11 +82,11 @@
         </div>
     </div>
 
-    <nav class="flex-1 overflow-y-auto overflow-x-hidden px-3 space-y-0.5">
+<nav class="flex-1 overflow-y-auto overflow-x-hidden px-3 space-y-0.5">
         <a href="{{ route('dashboard') }}" wire:navigate
            class="sidebar-item flex items-center gap-2.5 px-3 py-2 text-[13px] text-gray-700 {{ $active === 'dashboard' ? 'active' : '' }}">
             <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0 {{ $active === 'dashboard' ? '!text-emerald-600' : '' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/>
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
             <span class="nav-text whitespace-nowrap">Dashboard</span>
         </a>
@@ -130,7 +130,7 @@
         <a href="#" wire:navigate
            class="sidebar-item flex items-center gap-2.5 px-3 py-2 text-[13px] text-gray-700 {{ $active === 'time' ? 'active' : '' }}">
             <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0 {{ $active === 'time' ? '!text-emerald-600' : '' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
             </svg>
             <span class="nav-text whitespace-nowrap">Time Track</span>
         </a>
@@ -144,7 +144,7 @@
             <span class="nav-text whitespace-nowrap">Help</span>
         </a>
         <a href="{{ route('profile-settings') }}" wire:navigate class="sidebar-item flex items-center gap-2.5 px-3 py-2 text-[13px] text-gray-700 bottom-item {{ $active === 'settings' ? 'active' : '' }}">
-            <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0 {{ $active === 'settings' ? '!text-emerald-600' : '' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <svg class="w-[18px] h-[18px] text-gray-500 flex-shrink-0 {{ $active === 'settings' ? '!text-emerald-600' : '' }}" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
             </svg>
             <span class="nav-text whitespace-nowrap">Settings</span>

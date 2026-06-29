@@ -1,7 +1,7 @@
 <div class="space-y-6">
     <div class="flex items-center justify-between">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">{{ $company->name }}</h1>
+            <h1 class="text-2xl font-bold text-emerald-700">{{ $company->name }}</h1>
             <p class="text-sm text-gray-500 mt-0.5">{{ $company->description ?: 'Manage departments, invitations, and employees.' }}</p>
         </div>
 
@@ -55,9 +55,12 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-medium px-4 py-2.5 hover:bg-emerald-700 transition">
-                        Create Department
-                    </button>
+                    <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-medium px-4 py-2.5 hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                            </svg>
+                            Create Department
+                        </button>
                 </form>
             </div>
 
@@ -105,7 +108,10 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-medium px-4 py-2.5 hover:bg-emerald-700 transition">
+                    <button type="submit" class="w-full bg-emerald-600 text-white text-sm font-medium px-4 py-2.5 hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6"/>
+                        </svg>
                         Send Invitation
                     </button>
                 </form>
@@ -115,13 +121,26 @@
         <div class="xl:col-span-2">
             <div class="bg-white border border-gray-100 p-2">
                 <div class="grid grid-cols-3 gap-1 bg-gray-50 p-1">
-                    <button type="button" wire:click="selectTab('departments')" class="px-3 py-2 text-sm font-medium transition {{ $active_tab === 'departments' ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
+                    <button type="button" wire:click="selectTab('departments')" class="px-3 py-2 text-sm font-medium transition flex items-center justify-center gap-1.5 {{ $active_tab === 'departments' ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18"/>
+                        </svg>
                         Departments
                     </button>
-                    <button type="button" wire:click="selectTab('employees')" class="px-3 py-2 text-sm font-medium transition {{ $active_tab === 'employees' ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
+                    <button type="button" wire:click="selectTab('employees')" class="px-3 py-2 text-sm font-medium transition flex items-center justify-center gap-1.5 {{ $active_tab === 'employees' ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        </svg>
                         Employees
                     </button>
-                    <button type="button" wire:click="selectTab('invitations')" class="px-3 py-2 text-sm font-medium transition {{ $active_tab === 'invitations' ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
+                    <button type="button" wire:click="selectTab('invitations')" class="px-3 py-2 text-sm font-medium transition flex items-center justify-center gap-1.5 {{ $active_tab === 'invitations' ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700' }}">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m22 6-10 7L2 6"/>
+                        </svg>
                         Invitations
                     </button>
                 </div>

@@ -1,6 +1,6 @@
 <div class="space-y-6">
     <div>
-        <h1 class="text-2xl font-bold text-gray-900">Invitations</h1>
+        <h1 class="text-2xl font-bold text-emerald-700">Invitations</h1>
         <p class="text-sm text-gray-500 mt-0.5">Search employers by ID, join companies, and review invitations.</p>
     </div>
 
