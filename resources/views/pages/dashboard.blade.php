@@ -222,7 +222,7 @@
                     <div class="flex items-start justify-between gap-4 mb-5">
                         <div>
                             <p class="text-sm font-semibold text-gray-900">Attendance Trend</p>
-                            <p class="text-xs text-gray-500 mt-1">Last 7 working days based on check-in and check-out time.</p>
+                            <p class="text-xs text-gray-500 mt-1">Last 7 working days based on clock-in and clock-out time.</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="inline-flex items-center bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">{{ number_format($weeklyHours, 1) }}h</span>

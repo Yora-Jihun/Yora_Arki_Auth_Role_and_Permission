@@ -20,7 +20,7 @@ class AttendanceIndex extends Component
         $company = $membership['company'];
 
         if (! $company instanceof Company) {
-            $this->addError('attendance', 'You must join a company before checking in.');
+            $this->addError('attendance', 'You must join a company before clocking in.');
 
             return;
         }
@@ -37,14 +37,14 @@ class AttendanceIndex extends Component
         $this->authorize('checkIn', $attendance);
 
         if ($attendance->status === AttendanceStatus::CheckedIn) {
-            $this->addError('attendance', 'You already checked in today.');
+            $this->addError('attendance', 'You already clocked in today.');
 
             return;
         }
 
         $attendance->checkIn(Carbon::now());
 
-        session()->flash('status', 'Check-in recorded successfully.');
+        session()->flash('status', 'Clock-in recorded successfully.');
     }
 
     public function checkOut(): void
@@ -53,7 +53,7 @@ class AttendanceIndex extends Component
         $company = $membership['company'];
 
         if (! $company instanceof Company) {
-            $this->addError('attendance', 'You must join a company before checking out.');
+            $this->addError('attendance', 'You must join a company before clocking out.');
 
             return;
         }
@@ -64,7 +64,7 @@ class AttendanceIndex extends Component
             ->first();
 
         if (! $attendance instanceof Attendance) {
-            $this->addError('attendance', 'No check-in record found for today.');
+            $this->addError('attendance', 'No clock-in record found for today.');
 
             return;
         }
@@ -72,14 +72,14 @@ class AttendanceIndex extends Component
         $this->authorize('checkOut', $attendance);
 
         if ($attendance->status === AttendanceStatus::CheckedOut) {
-            $this->addError('attendance', 'You already checked out today.');
+            $this->addError('attendance', 'You already clocked out today.');
 
             return;
         }
 
         $attendance->checkOut(Carbon::now());
 
-        session()->flash('status', 'Check-out recorded successfully.');
+        session()->flash('status', 'Clock-out recorded successfully.');
     }
 
     public function render(): View
