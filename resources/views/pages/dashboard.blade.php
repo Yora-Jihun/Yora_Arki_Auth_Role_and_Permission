@@ -204,11 +204,11 @@
                     <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->status?->label() ?? 'Not Timed In' }}</p>
                 </div>
                 <div class="bg-white p-6 border border-gray-100">
-                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Time In</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Clock In</p>
                     <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->check_in_at?->format('h:i A') ?? '--' }}</p>
                 </div>
                 <div class="bg-white p-6 border border-gray-100">
-                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Time Out</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-1">Clock Out</p>
                     <p class="text-2xl font-semibold text-gray-900">{{ $todayAttendance?->check_out_at?->format('h:i A') ?? '--' }}</p>
                 </div>
                 <div class="bg-white p-6 border border-gray-100">
@@ -263,7 +263,7 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
                             </svg>
-                            Time In / Time Out
+                            Clock In / Clock Out
                         </a>
                         <a href="{{ route('employee.invitations') }}" wire:navigate class="block w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 text-sm text-gray-700 transition flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -306,7 +306,7 @@
                     <p class="text-sm font-semibold text-gray-900 mb-4">Weekly Summary</p>
                     <div class="space-y-3">
                             <div class="bg-gray-50 p-4">
-                            <p class="text-xs text-gray-500">Checked Out Days</p>
+                            <p class="text-xs text-gray-500">Clock Out Days</p>
                             <p class="text-2xl font-semibold text-gray-900 mt-1">{{ $checkedOutDays }}</p>
                         </div>
                             <div class="bg-gray-50 p-4">

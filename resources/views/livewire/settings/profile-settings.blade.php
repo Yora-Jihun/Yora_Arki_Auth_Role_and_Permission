@@ -7,23 +7,25 @@
     </div>
 
     @include('partials.alerts', [
-        'type' => 'success',
-        'message' => session('status'),
+    'type' => 'success',
+    'message' => session('status'),
     ])
 
     @php($identityId = auth()->user()->employee_id ?? auth()->user()->employer_id)
     @php($identityLabel = auth()->user()->isEmployee() ? 'Employee ID' : 'Employer ID')
 
-    <div class="bg-white border border-emerald-100 p-5">
+    <div class="bg-white p-5">
         <div class="flex items-start justify-between gap-4">
             <div>
                 <p class="text-xs font-medium text-emerald-700">{{ $identityLabel }}</p>
                 <p class="text-sm text-gray-500 mt-1">Share this ID so others can find your profile without using email.</p>
             </div>
-            <button type="button" onclick="navigator.clipboard.writeText('{{ $identityId }}').then(() => Livewire.dispatch('notify', 'Copied to clipboard')).catch(() => Livewire.dispatch('notify', 'Copy failed'))" class="inline-flex h-9 w-9 items-center justify-center border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition" aria-label="Copy {{ $identityLabel }}">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                    <path d="M5 9V5a2 2 0 0 1 2-2h4"/>
+            <button type="button" onclick="navigator.clipboard.writeText('{{ $identityId }}')
+        .then(() => Livewire.dispatch('notify', 'Copied to clipboard'))
+        .catch(() => Livewire.dispatch('notify', 'Copy failed'))" class="group inline-flex h-10 w-10 items-center justify-center border border-emerald-200 bg-white text-emerald-600 shadow-sm transition-all duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 hover:shadow-md active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2" aria-label="Copy {{ $identityLabel }}" title="Copy {{ $identityLabel }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-200 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="11" height="11" rx="2" />
+                    <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3" />
                 </svg>
             </button>
         </div>
@@ -36,9 +38,9 @@
         <div class="flex items-center gap-5 mb-6">
             <label for="avatarInput" class="cursor-pointer relative group flex-shrink-0">
                 @if(auth()->user()->avatar)
-                    <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar" loading="lazy">
+                <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar" loading="lazy">
                 @else
-                    <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar" loading="lazy">
+                <img id="avatarPreview" src="{{ $this->avatarPreviewUrl() }}" class="w-16 h-16 rounded-full object-cover border border-gray-200" alt="Avatar" loading="lazy">
                 @endif
                 <div class="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -49,7 +51,7 @@
             </label>
             <input type="file" id="avatarInput" wire:model="avatar" class="hidden" accept="image/png,image/jpeg,image/jpg">
             @error('avatar')
-                <p class="text-xs text-red-600">{{ $message }}</p>
+            <p class="text-xs text-red-600">{{ $message }}</p>
             @enderror
             <div>
                 <div class="flex items-center gap-2">
@@ -58,7 +60,7 @@
                 </div>
                 <p class="text-xs text-gray-500 mt-0.5">Joined {{ auth()->user()->created_at?->format('F j, Y') }}</p>
                 @if(auth()->user()->avatar)
-                    <button type="button" wire:click="removeAvatar" class="text-xs text-red-600 hover:text-red-700 mt-1">Remove photo</button>
+                <button type="button" wire:click="removeAvatar" class="text-xs text-red-600 hover:text-red-700 mt-1">Remove photo</button>
                 @endif
             </div>
         </div>
@@ -69,7 +71,7 @@
                     <label for="first_name" class="block text-xs font-medium text-gray-500 mb-1.5">First Name</label>
                     <input id="first_name" type="text" wire:model="first_name" class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-emerald-300 focus:bg-white transition">
                     @error('first_name')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -77,7 +79,7 @@
                     <label for="middle_name" class="block text-xs font-medium text-gray-500 mb-1.5">Middle Name</label>
                     <input id="middle_name" type="text" wire:model="middle_name" class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-emerald-300 focus:bg-white transition">
                     @error('middle_name')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -85,7 +87,7 @@
                     <label for="last_name" class="block text-xs font-medium text-gray-500 mb-1.5">Last Name</label>
                     <input id="last_name" type="text" wire:model="last_name" class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-emerald-300 focus:bg-white transition">
                     @error('last_name')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -101,7 +103,7 @@
                         <option value="V">V</option>
                     </select>
                     @error('suffix')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -109,7 +111,7 @@
                     <label for="email" class="block text-xs font-medium text-gray-500 mb-1.5">Email</label>
                     <input id="email" type="email" wire:model="email" class="w-full bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-emerald-300 focus:bg-white transition">
                     @error('email')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -131,18 +133,20 @@
                         <input id="contact_to" type="text" wire:model="contact_to" class="min-w-0 flex-1 bg-gray-50 px-3 py-2 text-sm text-gray-900 border border-gray-100  focus:outline-none focus:border-emerald-300 focus:bg-white transition">
                     </div>
                     @error('contact_to')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
 
             <div class="flex justify-end">
-                <button type="submit" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 transition flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                <button type="submit" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white text-sm font-medium hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V7l-4-4z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-8H7v8M7 3v5h8" />
                     </svg>
-                    Save Changes
+
+                    <span>Save Changes</span>
                 </button>
             </div>
         </form>
@@ -151,6 +155,7 @@
     @script
     <script>
         Livewire.on('notify', (message) => alert(message));
+
     </script>
     <script>
         const mainContent = document.getElementById('mainContent');
@@ -166,6 +171,7 @@
                 mainContent.style.marginLeft = '0px';
             }
         });
+
     </script>
     @endscript
 </main>

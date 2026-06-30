@@ -31,11 +31,11 @@
                 <p class="text-sm font-semibold text-gray-900 mt-1">{{ $today?->status?->label() ?? 'No attendance yet' }}</p>
                 <div class="space-y-2 mt-4">
                     <div class="flex items-center justify-between text-sm">
-                        <span class="text-gray-500">Time In</span>
+                        <span class="text-gray-500">Clock In</span>
                         <span class="font-medium text-gray-900">{{ $today?->check_in_at?->format('h:i A') ?? '--:--' }}</span>
                     </div>
                     <div class="flex items-center justify-between text-sm">
-                        <span class="text-gray-500">Time Out</span>
+                        <span class="text-gray-500">Clock Out</span>
                         <span class="font-medium text-gray-900">{{ $today?->check_out_at?->format('h:i A') ?? '--:--' }}</span>
                     </div>
                 </div>
@@ -47,14 +47,14 @@
                         <circle cx="12" cy="12" r="9"/>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2 2"/>
                     </svg>
-                    Time In
+                    Clock In
                 </button>
                 <button type="button" wire:click="checkOut" class="flex-1 bg-white border border-emerald-600 text-emerald-700 text-sm font-medium px-4 py-3 hover:bg-emerald-50 transition flex items-center justify-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                         <circle cx="12" cy="12" r="9"/>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l-2 2"/>
                     </svg>
-                    Time Out
+                    Clock Out
                 </button>
             </div>
         </div>

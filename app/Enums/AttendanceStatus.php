@@ -12,8 +12,8 @@ enum AttendanceStatus: string
     {
         return match ($this) {
             self::Pending => 'Pending',
-            self::CheckedIn => 'Checked In',
-            self::CheckedOut => 'Checked Out',
+            self::CheckedIn => 'Clock In',
+            self::CheckedOut => 'Clock Out',
         };
     }
 }
