@@ -1,4 +1,4 @@
-# Yora Jihun - Local Auth Arki 
+# Yora Jihun - Auth Role and Permission
 
 A Laravel-based authentication starter built with my own architecture, designed for developers who want to start local and scale their own application.
 
@@ -22,6 +22,7 @@ A Laravel-based authentication starter built with my own architecture, designed 
 
 - Register & Login with remember me
 - One-Time Password (OTP) verification for registration, password reset, and account deletion
+- Role-based access control with permissions
 - Dashboard with sidebar navigation
 - Profile Settings (name, email, avatar)
 - Security Settings (change password, delete account)
