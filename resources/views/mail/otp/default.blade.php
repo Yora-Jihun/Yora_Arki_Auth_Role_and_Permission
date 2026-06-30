@@ -10,8 +10,8 @@
     Your verification code is:
 </p>
 
-<div style="background-color: #eff6ff; border: 2px dashed #3b82f6; border-radius: 8px; padding: 24px; text-align: center; margin: 24px 0;">
-    <span style="font-size: 36px; font-weight: 700; letter-spacing: 6px; color: #2563eb; font-family: 'Courier New', monospace;">
+<div style="background-color: #ecfdf5; border: 2px dashed #059669; padding: 24px; text-align: center; margin: 24px 0;">
+    <span style="font-size: 36px; font-weight: 700; letter-spacing: 6px; color: #047857; font-family: 'Courier New', monospace;">
         {{ $otp }}
     </span>
 </div>

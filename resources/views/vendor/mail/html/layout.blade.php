@@ -16,7 +16,7 @@
                     <a href="{{ url('/') }}" style="text-decoration: none; display: block;">
                         <table cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
                             <tr>
-                                <td style="background-color: #2563eb; width: 44px; height: 44px; text-align: center; vertical-align: middle; font-size: 18px; font-weight: 700; color: white; letter-spacing: -0.5px;">
+                                <td style="background-color: #059669; width: 44px; height: 44px; text-align: center; vertical-align: middle; font-size: 18px; font-weight: 700; color: white; letter-spacing: -0.5px;">
                                     YA
                                 </td>
                                 <td width="12" style="font-size: 0; line-height: 0;">&nbsp;</td>

@@ -31,7 +31,7 @@
 <table width="100%" cellpadding="0" cellspacing="0">
     <tr>
         <td align="center">
-            <a href="{{ route('password.reset') }}" style="display: inline-block; background-color: #2563eb; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 14px;">
+            <a href="{{ route('password.reset') }}" style="display: inline-block; background-color: #059669; color: white; text-decoration: none; padding: 12px 24px; font-weight: 600; font-size: 14px;">
                 Reset Your Password
             </a>
         </td>
